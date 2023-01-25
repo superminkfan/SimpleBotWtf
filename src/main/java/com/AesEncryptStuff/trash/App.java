@@ -1,4 +1,4 @@
-package com.AesEncrypt.trash;
+package com.AesEncryptStuff.trash;
 
 import javax.crypto.Cipher;
 import java.security.SecureRandom;

@@ -1,6 +1,4 @@
-package com.AesEncrypt;
-
-import com.AesEncrypt.CoolAes256;
+package com.AesEncryptStuff;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;

@@ -1,4 +1,4 @@
-package com.AesEncrypt;
+package com.AesEncryptStuff;
 
 import javax.crypto.*;
 import javax.crypto.spec.IvParameterSpec;

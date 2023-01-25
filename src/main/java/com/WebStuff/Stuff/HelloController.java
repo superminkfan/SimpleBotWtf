@@ -1,6 +1,6 @@
 package com.WebStuff.Stuff;
 
-import com.AesEncrypt.CoolAes256;
+import com.AesEncryptStuff.CoolAes256;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,14 +33,14 @@ public class HelloController {
         } catch (InvalidKeySpecException e) {
             e.printStackTrace();
         }
-        String input = "world";
+        //String input = "world";
         //создаем усложнение
         IvParameterSpec ivParameterSpec = CoolAes256.generateIv();
         String cipherText = "";
         String plainText = "";
         try {
 
-            cipherText = CoolAes256.encrypt(input, key, ivParameterSpec);
+            cipherText = CoolAes256.encrypt(name, key, ivParameterSpec);
             plainText = CoolAes256.decrypt(cipherText, key, ivParameterSpec);
 
         } catch (NoSuchPaddingException e) {
