@@ -1,6 +1,4 @@
-package com;
-
-import com.AesEncrypt.Aes256Class;
+package com.AesEncrypt.trash;
 
 import javax.crypto.Cipher;
 import java.security.SecureRandom;

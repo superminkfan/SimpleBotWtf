@@ -1,4 +1,4 @@
-package com.AesEncrypt;
+package com.AesEncrypt.trash;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
