@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class Aes256Class {
 
-    private SecretKey secretKey;
+    public SecretKey secretKey;
 
     public Aes256Class() {
         try {

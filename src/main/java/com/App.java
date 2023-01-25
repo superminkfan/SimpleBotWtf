@@ -13,7 +13,7 @@ public class App {
         byte[] salt = new byte[8];
         //Исходное сообщение
         String mes = "Опасность";
-        //Выполним операцию 10 раз
+
         for (int i = 0; i < 10; i++) {
             //Генерация соли
             SecureRandom random = new SecureRandom();
