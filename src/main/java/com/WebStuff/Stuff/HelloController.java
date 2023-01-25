@@ -25,9 +25,11 @@ public class HelloController {
         Optional<String> opt = Optional.ofNullable(name);
 
         SecretKey key = null;
+        String pass = "4312202023НадоБля32Символа!!!Zen";
+        
 
         try {
-            key = CoolAes256.getKeyFromPassword(name, "salt");
+            key = CoolAes256.getKeyFromPassword(pass, "salt");
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (InvalidKeySpecException e) {
@@ -40,7 +42,7 @@ public class HelloController {
         String plainText = "";
         try {
 
-            cipherText = CoolAes256.encrypt(name, key, ivParameterSpec);
+            cipherText = CoolAes256.encrypt(opt.orElseThrow(), key, ivParameterSpec);
             plainText = CoolAes256.decrypt(cipherText, key, ivParameterSpec);
 
         } catch (NoSuchPaddingException e) {

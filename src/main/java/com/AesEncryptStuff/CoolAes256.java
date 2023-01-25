@@ -55,6 +55,34 @@ public class CoolAes256 {
         return new IvParameterSpec(iv);
     }
 
+    /**
+     *
+     * @param str строка для перевода в 16-ричную систему
+     * @return за каким то хером надо в 16 ричной системе
+     */
+    public static String convertStringToHex(String str) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        char[] charArray = str.toCharArray();
+
+        for (char c : charArray) {
+            String charToHex = Integer.toHexString(c);
+            stringBuilder.append(charToHex);
+        }
+
+        return stringBuilder.toString();
+    }
+
+    public static String convertByteArrayToHex(byte[] a) {
+        StringBuilder sb = new StringBuilder(a.length * 2);
+        for(byte b: a) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
+    }
+
+//==========================================================================
+
     public static String encrypt(String input, SecretKey key,
                                  IvParameterSpec iv) throws NoSuchPaddingException, NoSuchAlgorithmException,
             InvalidAlgorithmParameterException, InvalidKeyException,
@@ -63,6 +91,9 @@ public class CoolAes256 {
         Cipher cipher = Cipher.getInstance(algorithm);
         cipher.init(Cipher.ENCRYPT_MODE, key, iv);
         byte[] cipherText = cipher.doFinal(input.getBytes());
+
+        System.out.println("Cipher in byte = " + convertByteArrayToHex(cipherText));
+
         return Base64.getEncoder()
                 .encodeToString(cipherText);
     }

@@ -1,5 +1,6 @@
 package com.AesEncryptStuff;
 
+
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
@@ -12,8 +13,13 @@ import java.security.spec.InvalidKeySpecException;
 
 public class CoolApp {
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
+        String pass = "4312202023НадоБля32Символа!!!Zen";
+
+
+
+
         //создаем ключ
-        SecretKey key = CoolAes256.getKeyFromPassword("34333132323032303233CDE0E4EEC1EBFF3332D1E8ECE2EEEBE02121215A656E", "a");
+        SecretKey key = CoolAes256.getKeyFromPassword(CoolAes256.convertStringToHex(pass), "a");
         String input = "7757110,77571010,776571,997181";
         //создаем усложнение
         IvParameterSpec ivParameterSpec = CoolAes256.generateIv();
@@ -23,6 +29,7 @@ public class CoolApp {
         String plainText = CoolAes256.decrypt(cipherText, key, ivParameterSpec);
 
         System.out.println(cipherText);
+        //System.out.println(CoolAes256.convertStringToHex(cipherText));
         System.out.println(plainText);
     }
 }
