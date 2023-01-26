@@ -14,13 +14,13 @@ import java.security.spec.InvalidKeySpecException;
 public class CoolApp {
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException, InvalidAlgorithmParameterException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
         String pass = "4312202023НадоБля32Символа!!!Zen";
+        String input = "7757110,77571010,776571,997181";
 
 
 
 
         //создаем ключ
         SecretKey key = CoolAes256.getKeyFromPassword(CoolAes256.convertStringToHex(pass), "a");
-        String input = "7757110,77571010,776571,997181";
         //создаем усложнение
         IvParameterSpec ivParameterSpec = CoolAes256.generateIv();
         //шифруем

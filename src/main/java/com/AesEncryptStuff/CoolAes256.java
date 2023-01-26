@@ -14,7 +14,7 @@ import java.util.Base64;
 
 public class CoolAes256 {
 
-    private static String algorithm = "AES/CBC/PKCS5Padding";
+    private static String algorithm = "AES/CBC/PKCS5Padding";//указание алгоритма
 
     /**
      * @param n 128, 192, и 256
@@ -73,6 +73,11 @@ public class CoolAes256 {
         return stringBuilder.toString();
     }
 
+    /**
+     *
+     * @param a массив битов
+     * @return строку в 16 ричной системе
+     */
     public static String convertByteArrayToHex(byte[] a) {
         StringBuilder sb = new StringBuilder(a.length * 2);
         for(byte b: a) {
