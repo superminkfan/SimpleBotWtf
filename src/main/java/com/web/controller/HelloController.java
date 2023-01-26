@@ -1,6 +1,6 @@
-package com.WebStuff.Stuff;
+package com.web.controller;
 
-import com.AesEncryptStuff.CoolAes256;
+import com.aesEncrypt.CoolAes256;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,7 +9,6 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -26,7 +25,7 @@ public class HelloController {
 
         SecretKey key = null;
         String pass = "4312202023НадоБля32Символа!!!Zen";
-        
+
 
         try {
             key = CoolAes256.getKeyFromPassword(pass, "salt");
@@ -37,13 +36,13 @@ public class HelloController {
         }
         //String input = "world";
         //создаем усложнение
-        IvParameterSpec ivParameterSpec = CoolAes256.generateIv();
+       // IvParameterSpec ivParameterSpec = CoolAes256.generateIv();
         String cipherText = "";
         String plainText = "";
         try {
 
-            cipherText = CoolAes256.encrypt(opt.orElseThrow(), key, ivParameterSpec);
-            plainText = CoolAes256.decrypt(cipherText, key, ivParameterSpec);
+            cipherText = CoolAes256.encrypt(opt.orElseThrow(), key);
+            plainText = CoolAes256.decrypt(cipherText, key);
 
         } catch (NoSuchPaddingException e) {
             e.printStackTrace();

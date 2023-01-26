@@ -1,4 +1,4 @@
-package com.AesEncryptStuff;
+package com.aesEncrypt;
 
 import javax.crypto.*;
 import javax.crypto.spec.IvParameterSpec;
@@ -14,7 +14,7 @@ import java.util.Base64;
 
 public class CoolAes256 {
 
-    private static String algorithm = "AES/CBC/PKCS5Padding";//указание алгоритма
+    private static String algorithm = "AES/ECB/PKCS5Padding";//указание алгоритма
 
     /**
      * @param n 128, 192, и 256
@@ -88,30 +88,27 @@ public class CoolAes256 {
 
 //==========================================================================
 
-    public static String encrypt(String input, SecretKey key,
-                                 IvParameterSpec iv) throws NoSuchPaddingException, NoSuchAlgorithmException,
+    public static String encrypt(String input, SecretKey key) throws NoSuchPaddingException, NoSuchAlgorithmException,
             InvalidAlgorithmParameterException, InvalidKeyException,
             BadPaddingException, IllegalBlockSizeException {
 
         Cipher cipher = Cipher.getInstance(algorithm);
-        cipher.init(Cipher.ENCRYPT_MODE, key, iv);
+        cipher.init(Cipher.ENCRYPT_MODE, key);
         byte[] cipherText = cipher.doFinal(input.getBytes());
-
-        System.out.println("Cipher in byte = " + convertByteArrayToHex(cipherText));
 
         return Base64.getEncoder()
                 .encodeToString(cipherText);
     }
 
-    public static String decrypt(String cipherText, SecretKey key,
-                                 IvParameterSpec iv) throws NoSuchPaddingException, NoSuchAlgorithmException,
+    public static String decrypt(String cipherText, SecretKey key) throws NoSuchPaddingException, NoSuchAlgorithmException,
             InvalidAlgorithmParameterException, InvalidKeyException,
             BadPaddingException, IllegalBlockSizeException {
 
         Cipher cipher = Cipher.getInstance(algorithm);
-        cipher.init(Cipher.DECRYPT_MODE, key, iv);
+        cipher.init(Cipher.DECRYPT_MODE, key);
         byte[] plainText = cipher.doFinal(Base64.getDecoder()
                 .decode(cipherText));
+
         return new String(plainText);
     }
 }

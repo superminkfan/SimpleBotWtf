@@ -1,4 +1,4 @@
-package com.AesEncryptStuff;
+package com.aesEncrypt;
 
 
 import javax.crypto.BadPaddingException;
@@ -19,14 +19,15 @@ public class CoolApp {
 
 
 
+
         //создаем ключ
-        SecretKey key = CoolAes256.getKeyFromPassword(CoolAes256.convertStringToHex(pass), "a");
-        //создаем усложнение
-        IvParameterSpec ivParameterSpec = CoolAes256.generateIv();
+        SecretKey key = CoolAes256.getKeyFromPassword(CoolAes256.convertStringToHex(pass), " ");
+//        //создаем усложнение
+//        IvParameterSpec ivParameterSpec = CoolAes256.generateIv();
         //шифруем
-        String cipherText = CoolAes256.encrypt(input, key, ivParameterSpec);
+        String cipherText = CoolAes256.encrypt(input, key);
         //дешифруем
-        String plainText = CoolAes256.decrypt(cipherText, key, ivParameterSpec);
+        String plainText = CoolAes256.decrypt(cipherText, key);
 
         System.out.println(cipherText);
         //System.out.println(CoolAes256.convertStringToHex(cipherText));
